@@ -1,0 +1,12 @@
+<%- include('includes/header.ejs') %>
+
+  <h1><%= todo.title %></h1>
+  <% if(todo.done){ %> 
+  <p>ВЫПОЛНЕНО</p>
+  <% } %>
+  <% if(todo.desc){ %> 
+  <p><%= todo.desc %></p>
+  <% } %>
+  <p class="datetime">Создано: <%= new Date(todo.createdAt).toLocaleString() %></p>
+  
+<%- include('includes/footer.ejs') %>

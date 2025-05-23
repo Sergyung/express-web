@@ -1,0 +1,17 @@
+<%- include('includes/header.ejs') %>
+    <h1>Добавление дела</h1>
+    <form action="/add" method="post">
+        <label>Заголовок</label>
+        <input name="title" value="<%= body.title || '' %>">
+        <% if (errors.title){ %>
+            <div><span class="label error">
+                <%= errors.title.msg %>
+            </span> </div>
+        <% } %>
+        <label>Описаие</label>
+        <textarea name="desc"><%= body.desc || '' %></textarea>
+        <div class="horizontal">
+            <input type="submit" value="Добавить" >
+        </div>
+    </form>
+<%- include('includes/footer.ejs') %>    
