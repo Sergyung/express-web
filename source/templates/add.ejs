@@ -1,6 +1,6 @@
 <%- include('includes/header.ejs') %>
     <h1>Добавление дела</h1>
-    <form action="/add" method="post">
+    <form action="/add" method="post" enctype="multipart/form-data">
         <label>Заголовок</label>
         <input name="title" value="<%= body.title || '' %>">
         <% if (errors.title){ %>
@@ -8,8 +8,15 @@
                 <%= errors.title.msg %>
             </span> </div>
         <% } %>
-        <label>Описаие</label>
+        <label>Описание</label>
         <textarea name="desc"><%= body.desc || '' %></textarea>
+        <label>Иллюстрация</label>
+        <input type="file" name="addendum" accept="image/*">
+        <% if(errors.addendum) { %>
+        <div><span class="label error">
+            <%= errors.addendum.msg %>
+        </span></div>
+        <% } %>
         <div class="horizontal">
             <input type="submit" value="Добавить" >
         </div>

@@ -13,6 +13,7 @@ import { mainErrorHandler, error500Handler} from './error-handlers.js';
 const FileStore = _FileStore(session);
 const router = Router();
 
+router.use('/uploaded', staticMiddleware('storage/uploaed'));
 router.use(staticMiddleware('public'));
 router.use(urlencoded({extended: true}));
 router.use(methodOverride('_method'));
