@@ -5,9 +5,10 @@ import session from "express-session";
 import _FileStore from 'session-file-store';
 import { flash } from "express-flash-message";
 
+import { registerPage, register } from "./controllers/users.js";
 import { mainPage, detailPage, addPage, add, setDone, remove, setOrder, addendumWrapper } from './controllers/todos.js';
-import { requestToContext, handleErrors, extendFlashAPI, getErrors } from "./middleware.js";
-import { todoV } from "./validators.js";
+import { requestToContext, handleErrors, extendFlashAPI, getErrors, loadCurrentUser, isGuest, isLoggedIn } from "./middleware.js";
+import { todoV, registerV } from "./validators.js";
 import { mainErrorHandler, error500Handler} from './error-handlers.js';
 
 const FileStore = _FileStore(session);
@@ -40,6 +41,12 @@ router.use(session({
 }));
 router.use(flash({sessionKeyName: 'flash-message'}));
 router.use(extendFlashAPI);
+router.use(loadCurrentUser);
+
+router.get('/register', isGuest, getErrors, registerPage);
+router.post('/register', isGuest, registerV, handleErrors, register);
+
+router.use(isLoggedIn);
 
 router.get('/add', getErrors, addPage);
 router.post('/add', addendumWrapper, todoV, handleErrors, add);

@@ -9,12 +9,18 @@
 </head>
 <body>
   <nav>
+    <% if(req.user) { %>
     <a href="/" class="brand">
       <span>Список дел</span>
     </a>
+    <% } %>
     <input id="bmenub" type="checkbox" class="show">
     <label for="bmenub" class="burger pseudo button">&#9776</label>
     <div class="menu">
+      <% if(req.user) { %>
       <a href="/add/" class="button">Добавить дело</a>
+      <% } else { %>
+        <a href="/register/" class="button">Зарегистрироваться</a>
+      <% } %>  
     </div>
   </nav>
