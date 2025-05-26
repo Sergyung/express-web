@@ -1,0 +1,22 @@
+<%- include('includes/header.ejs') %>
+<h1>Вход</h1>
+<form action="/login" method="post">
+    <label>Имя пользователя</label>
+    <input name="username" value="<%= body.username || '' %>">
+    <% if(errors.username) { %>
+        <div><span class="label error">
+            <%= errors.username.msg %>
+        </span></div>
+    <% } %>
+    <label>Пароль</label>
+    <input type="password" name="password" value="<%= body.password || '' %>">
+    <% if(errors.password) { %>
+        <div><span class="label error">
+            <%= errors.password.msg %>
+        </span></div>
+    <% } %>
+    <div class="horizontal">
+        <input type="submit" value="Войти">
+    </div>    
+</form>
+<%- include('includes/footer.ejs') %>

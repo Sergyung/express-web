@@ -19,8 +19,12 @@
     <div class="menu">
       <% if(req.user) { %>
       <a href="/add/" class="button">Добавить дело</a>
+      <form action="/logout" method="post" class="horizontal">
+        <input type="submit" class="warning" value="Выйти">
+      </form>
       <% } else { %>
         <a href="/register/" class="button">Зарегистрироваться</a>
+        <a href="/login/" class="button success">Войти</a>
       <% } %>  
     </div>
   </nav>
