@@ -7,7 +7,7 @@
   <% if(todo.desc){ %> 
   <p><%= todo.desc %></p>
   <% } %>
-  <p class="datetime">Создано: <%= new Date(todo.createdAt).toLocaleString() %></p>
+  <p class="datetime">Создано: <%= todo.createdAt.toLocaleString() %></p>
   <% if(todo.addendum) { %>
   <p class="addendum">
     <img src="/simple-web/storage/uploaded/<%= todo.addendum %>">

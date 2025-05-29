@@ -26,7 +26,7 @@
       <% if(t.desc) { %>
       <p><%= t.desc %></p>
       <% } %>
-      <p class="datetime"><%= new Date(t.createdAt).toLocaleString() %></p>
+      <p class="datetime"><%= t.createdAt.toLocaleString() %></p>
       <div class="horizontal">
         <% if(!t.done) { %>
         <form action="/<%= t._id %>?_method=PUT" method="post">

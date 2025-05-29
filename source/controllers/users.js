@@ -17,8 +17,8 @@ export async function register(req, res) {
         password: hash,
         salt: salt
     };
-    addUser(user);
-    res.redirect('/'); 
+    await addUser(user);
+    res.redirect('/login'); 
 }
 
 export function loginPage(req, res) {
