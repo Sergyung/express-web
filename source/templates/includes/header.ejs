@@ -18,6 +18,7 @@
     <label for="bmenub" class="burger pseudo button">&#9776</label>
     <div class="menu">
       <% if(req.user) { %>
+      <h3 class="horizontal"><%= req.user.name %></h3>  
       <a href="/add/" class="button">Добавить дело</a>
       <form action="/logout" method="post" class="horizontal">
         <input type="submit" class="warning" value="Выйти">
