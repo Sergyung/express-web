@@ -1,7 +1,17 @@
 import { Todo } from './__loaddatabase.js';
 
 export async function getList(user, doneAtLast, search) {
-  return await Todo.find({user: user});
+  const qTodos = Todo.find({user: user});
+  if(doneAtLast === '1')
+    qTodos.sort('done createdAt');
+  else
+    qTodos.sort('createdAt');
+  if(search)
+    qTodos.or([
+      { title: new RegExp(search, 'i')},
+      { desc: new RegExp(search, 'i')}
+    ]);
+  return await qTodos;  
 }
 
 export async function getItem(id, user) {
