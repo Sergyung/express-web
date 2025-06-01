@@ -1,0 +1,15 @@
+<%- include('includes/header.ejs') %>
+<h1>Самые активные пользователи</h1>
+<h2>Больше всего дел у пользователей:</h2>
+<ul>
+<% for(let u of mostActiveAll) { %>
+    <li><%= u._id %>: <%= u.cnt %></li>
+<% } %>
+</ul>
+<h2>Больше всего выполненных дел у пользователей:</h2>
+<ul>
+<% for(let u of mostActiveDone) { %>
+    <li><%= u._id %>: <%= u.cnt %></li>
+<% } %>
+</ul>  
+<%- include('includes/footer.ejs') %>   

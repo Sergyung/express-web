@@ -4,8 +4,9 @@ import { join } from "node:path";
 import { rm } from 'node:fs/promises';
 import { currentDir } from '../utility.js';
 
-import { getList, getItem, addItem, setDoneItem, deleteItem } from '../models/todos.js';
+import { getList, getItem, addItem, setDoneItem, deleteItem, getMostActiveUsers } from '../models/todos.js';
 import { addendumUploader } from '../../storage/uploaded/uploaders.js';
+import { title } from 'node:process';
 
 export async function mainPage(req, res) { 
   let list = await getList(req.user.id, req.cookies.doneAtLast, req.query.search);
@@ -93,5 +94,14 @@ export function addendumWrapper(req, res, next){
         next(err);
     else
       next();
+  });
+}
+
+export async function mostActiveUsers(req, res) {
+  const r = await getMostActiveUsers();
+  res.render('most-active', {
+    title: 'Самые активные пользователи',
+    mostActiveAll: r[0],
+    mostActiveDone: r[1]
   });
 }

@@ -10,9 +10,8 @@
 <body>
   <nav>
     <% if(req.user) { %>
-    <a href="/" class="brand">
-      <span>Список дел</span>
-    </a>
+    <a href="/" class="brand"><span>Список дел</span></a>
+    <a href="/mostactive" class="brand"><span>Рейтинг</span></a>
     <% } %>
     <input id="bmenub" type="checkbox" class="show">
     <label for="bmenub" class="burger pseudo button">&#9776</label>

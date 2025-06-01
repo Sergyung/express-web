@@ -6,7 +6,7 @@ import _FileStore from 'session-file-store';
 import { flash } from "express-flash-message";
 
 import { registerPage, register, loginPage, login, logout } from "./controllers/users.js";
-import { mainPage, detailPage, addPage, add, setDone, remove, setOrder, addendumWrapper } from './controllers/todos.js';
+import { mainPage, detailPage, addPage, add, setDone, remove, setOrder, addendumWrapper, mostActiveUsers } from './controllers/todos.js';
 import { requestToContext, handleErrors, extendFlashAPI, getErrors, loadCurrentUser, isGuest, isLoggedIn } from "./middleware.js";
 import { todoV, registerV, loginV } from "./validators.js";
 import { mainErrorHandler, error500Handler} from './error-handlers.js';
@@ -50,6 +50,7 @@ router.post('/login', isGuest, loginV, handleErrors, login);
 
 router.use(isLoggedIn);
 
+router.get('/mostactive', mostActiveUsers);
 router.post('/logout', logout);
 router.get('/add', getErrors, addPage);
 router.post('/add', addendumWrapper, todoV, handleErrors, add);
